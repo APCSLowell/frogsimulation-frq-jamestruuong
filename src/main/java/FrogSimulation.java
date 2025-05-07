@@ -1,29 +1,54 @@
 public class FrogSimulation
 {
-	private int goalDistance;
-	private int maxHops;
-	
-	public FrogSimulation(int dist, int numHops)
-	{
-		goalDistance = dist;
-		maxHops = numHops;
-		maxHopsHolder = numHops;  //ignore this, it's used for testing
-	}
-	
-	//private int hopDistance() 
-	//implementation is below, but not important
-	
-	public boolean simulate()
-	{ 
-		/* to be implemented in part (a) */
+    private int goalDistance;
+    private int maxHops;
+    
+    public FrogSimulation(int dist, int numHops)
+    {
+        goalDistance = dist;
+        maxHops = numHops;
+        maxHopsHolder = numHops;  //ignore this, it's used for testing
+    }
+    
+    //private int hopDistance() 
+    //implementation is below, but not important
+    
+    public boolean simulate()
+    { 
+        /* to be implemented in part (a) */
+        int position = 0;
 
-	}
-	
-	public double runSimulations(int num)
-	{ 
-		/* to be implemented in part (b) */ 
+    for (int i = 0; i < maxHops; i++) {
+        position += hopDistance();
 
-	}
+        if (position >= goalDistance) {
+            return true; 
+        }
+
+        if (position < 0) {
+            return false; 
+        }
+    }
+
+    return false; 
+
+    }
+    
+    public double runSimulations(int num)
+    { 
+        /* to be implemented in part (b) */ 
+        int successCount = 0;
+
+    for (int i = 0; i < num; i++) {
+        if (simulate()) {
+            successCount++;
+        }
+    }
+
+    return (double) successCount / num;
+    }
+    
+    
 	
 	
 	//ignore the code below this line
